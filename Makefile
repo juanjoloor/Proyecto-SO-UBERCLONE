@@ -11,7 +11,7 @@ client: client.o common.o $(DEPS)
 	gcc -o $@ client.o common.o $(DFLAGS) -lpthread
 
 taxi: taxi.o 
-	gcc -o $@ taxi.o
+	gcc -o $@ taxi.o -lm
 
 clienteVIP: clienteVIP.o 
 	gcc -o $@ clienteVIP.o	
