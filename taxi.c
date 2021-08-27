@@ -2,8 +2,19 @@
 #include <time.h>
 #include <math.h>
 
+
+
+// typedef struct Taxi {
+//    int  ocupado;
+//    int  posicionInicial[2];
+//    int  taxi_id;
+// } Taxi;
+
+
+
 int rand();
 int srand();
+int valorModulo(int  a[] , int b[]);
 
 int printRandoms(int lower, int upper)
 {
@@ -19,12 +30,13 @@ void posicionAleatoria(int x){
     printf("posicion inicial %d,%d",posInicial[0],posInicial[1]);
 }
 
-int puedeSerAtendido( int z){
+int puedeSerAtendido( int a[] ,int b[] , int limite){
+    int distancia = valorModulo(a,b);
     int bandera = 0;
-    int des1= 10;
-    if ( des1 < z){
+    if ( distancia < limite){
         bandera = 1;
     }
+    printf(" la bandera es %d :" , bandera);
     return bandera;
 }
 
@@ -43,11 +55,20 @@ int tiempoViaje(int t , int x[], int y[]){
     return tiempo;
 }
 
+
 int main(){
     srand(time(0));
-    int x[2] = {1,-2};
-    int y[2] = {5,-5};
-    valorModulo(x,y);
-    tiempoViaje(2 , x , y );
+    // int x[2] = {1,-2};
+    // int y[2] = {5,-5};
+    // valorModulo(x,y);
+    // tiempoViaje(2 , x , y );
+    // puedeSerAtendido(x,y,4);
+
+    // Taxi me = { .taxi_id = 1,
+    //               .ocupado = 1,
+    //               .posicionInicial = y   };
+
+    // printf(" Taxi numero: %d\n EstadoOcupado: %d\n Posicion Inicial%d\n",  me.taxi_id, me.ocupado ,me.posicionInicial);
+
     }
 

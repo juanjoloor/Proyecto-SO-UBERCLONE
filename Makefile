@@ -5,7 +5,7 @@ CFLAGS = -Wall -c
 all: server client taxi clienteVIP clienteNVIP
 
 server: server.o common.o $(DEPS)
-	gcc -o $@ server.o common.o $(DFLAGS) -lpthread
+	gcc -o $@ server.o common.o $(DFLAGS) -lpthread -lm
 
 client: client.o common.o $(DEPS)
 	gcc -o $@ client.o common.o $(DFLAGS) -lpthread

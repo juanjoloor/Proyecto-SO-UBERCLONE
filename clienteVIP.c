@@ -4,6 +4,13 @@
 int rand();
 int srand();
 
+typedef struct Cliente {
+   int  posicionActual;
+   int  cliente_id;
+} Cliente;
+
+
+
 int printRandoms(int lower, int upper)
 {
     int num = (rand() % (upper - lower + 1)) + lower;
@@ -32,9 +39,21 @@ void posicionAleatoriaFinal(int x ){
 
 int main(){
     printf("soy cliente ");
-    srand(time(0));
-    posicionAleatoriaActual(5);
-    posicionAleatoriaFinal(5);
-    
+    // srand(time(0));
+    // posicionAleatoriaActual(5);
+    // posicionAleatoriaFinal(5);
+      int y[2] = {5,-5};
+    // valorModulo(x,y);
+    // tiempoViaje(2 , x , y );
+    // puedeSerAtendido(x,y,4);
+
+    Cliente me = { .cliente_id = 1,
+                  .posicionActual = y   };
+
+
+    printf(" Cliente numero: %d\n Posicion Actual%d\n", me.cliente_id , me.posicionActual);
+
     }
+
+
 

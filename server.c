@@ -10,7 +10,7 @@
 
 void atender_cliente(int connfd);
 void crearInformacion(const char *buffers, char *info);
-int  gettRandom(int lower, int upper);
+
 
 void print_help(char *command)
 {
@@ -82,6 +82,9 @@ void salir(int signal){
 }
 
 void *thread(void *vargp);
+void *threadTaxi (void *vargp);
+void *threadClientes (void *vargp);
+
 
 bool dflag = false; //Opción -d, El programa es Daemon
 bool jflag = false; 
@@ -158,6 +161,26 @@ int main(int argc, char **argv)
 		}
 		printf("Grilla de %s x %s, espera de %s turnos antes de aumentar prioridad , %s segundos entre cada movimiento en la grilla , %s es la distancia maxima a un cliente para ser atendido por un taxi, %s clientes VIP, %s clientos NOVIP , %s taxis \n ",argv[1],argv[1],argv[2],argv[3],argv[4],argv[5],argv[6],argv[7]);
 
+		printf("numero de taxis : %d" , atoi(argv[7]));
+
+		int totalclientes= atoi(argv[5]) + atoi(argv[6]);
+
+	  	printf(" \n numero de clientes: %d \n",totalclientes);
+
+		pthread_t ptTaxis;
+		pthread_t ptClientes;
+
+		int x=0;
+		for (x = 0; x < atoi(argv[7]); x++){
+			pthread_create(&ptTaxis, NULL, threadTaxi, NULL);
+		}
+		int y=0;
+		for (y = 0; y < totalclientes; y++){
+			pthread_create(&ptClientes, NULL, threadClientes, NULL);
+		}
+
+
+
 	if(argv == NULL){
 		fprintf(stderr, "uso: %s [-d] <puerto>\n", argv[0]);
 		fprintf(stderr, "	 %s -h\n", argv[0]);
@@ -216,6 +239,20 @@ void *thread(void *vargp){
 	
 	}
 }
+
+void* threadTaxi( void * vargp){
+		
+			printf("\n hilo taxi corriendo \n");
+			return NULL;
+
+}
+
+void* threadClientes( void * vargp){
+			printf("\n hilo cliente corriendo \n");
+			return NULL;
+
+}
+
 
 void atender_cliente(int connfd)
 {

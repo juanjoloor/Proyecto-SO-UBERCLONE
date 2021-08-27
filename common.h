@@ -38,6 +38,12 @@ typedef struct
     sem_t items;
 }sbuf_t;
 
+typedef struct Taxi {
+   int  ocupado;
+   int  posicionInicial;
+   int  taxi_id;
+   
+} Taxi;
 
 
 
